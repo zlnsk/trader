@@ -1,0 +1,44 @@
+/* ============================================================
+   Scandi tokens — shared across apps using the Scandinavian-spa
+   aesthetic (Oura dashboard, Jobs).
+
+   Applied at both :root and .scandi so an app can either:
+     - scope by wrapping content in `<div class="scandi">` (Oura)
+     - or adopt globally by setting tokens at :root (Jobs)
+
+   When both apply, the element's nearest ancestor wins (standard
+   custom-property cascade).
+   ============================================================ */
+
+:root, .scandi {
+  --paper:        #F4F1EC;
+  --paper-2:      #EDE8E0;
+  --card:         #FBFAF7;
+  --line:         #E3DDD2;
+  --line-2:       #D6CEBF;
+
+  --ink:          #1A1A17;
+  --ink-2:        #3A3832;
+  --ink-3:        #6B6860;
+  --ink-4:        #9A968C;
+  --ink-5:        #BFBAB0;
+
+  --accent:       #5B6B5A;
+  --accent-soft:  #C6CFC2;
+  --accent-wash:  #DDE3D7;
+
+  --warm:         #B08968;
+  --warn:         #9A7B4F;
+  --alert:        #8A5A4E;
+
+  --ring-sleep:   #6A7D68;
+  --ring-ready:   #8C7A5B;
+  --ring-active:  #A87B5E;
+
+  --scandi-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --scandi-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  --gutter: 40px;
+  --radius: 14px;
+  --radius-lg: 22px;
+}

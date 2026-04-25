@@ -1,0 +1,255 @@
+/* Material 3 tokens — shared across hosted apps
+   Override --m3-source-hue per app to reshade the palette. */
+
+:root {
+  --m3-source-hue: 210;
+  --m3-source-chroma: 32%;
+
+  /* Neutral surfaces (light) */
+  --m3-surface-dim: hsl(var(--m3-source-hue) 14% 88%);
+  --m3-surface: hsl(var(--m3-source-hue) 22% 98%);
+  --m3-surface-bright: hsl(var(--m3-source-hue) 30% 99%);
+  --m3-surface-container-lowest: #ffffff;
+  --m3-surface-container-low: hsl(var(--m3-source-hue) 24% 96%);
+  --m3-surface-container: hsl(var(--m3-source-hue) 20% 94%);
+  --m3-surface-container-high: hsl(var(--m3-source-hue) 18% 91%);
+  --m3-surface-container-highest: hsl(var(--m3-source-hue) 16% 88%);
+
+  --m3-on-surface: hsl(var(--m3-source-hue) 12% 12%);
+  --m3-on-surface-variant: hsl(var(--m3-source-hue) 10% 35%);
+  --m3-outline: hsl(var(--m3-source-hue) 8% 55%);
+  --m3-outline-variant: hsl(var(--m3-source-hue) 12% 82%);
+
+  /* Key colors */
+  --m3-primary: hsl(var(--m3-source-hue) var(--m3-source-chroma) 40%);
+  --m3-on-primary: #ffffff;
+  --m3-primary-container: hsl(var(--m3-source-hue) var(--m3-source-chroma) 88%);
+  --m3-on-primary-container: hsl(var(--m3-source-hue) var(--m3-source-chroma) 12%);
+
+  --m3-secondary: hsl(calc(var(--m3-source-hue) + 30) 24% 42%);
+  --m3-on-secondary: #ffffff;
+  --m3-secondary-container: hsl(calc(var(--m3-source-hue) + 30) 26% 90%);
+  --m3-on-secondary-container: hsl(calc(var(--m3-source-hue) + 30) 30% 14%);
+
+  --m3-tertiary: hsl(calc(var(--m3-source-hue) + 120) 28% 42%);
+  --m3-on-tertiary: #ffffff;
+  --m3-tertiary-container: hsl(calc(var(--m3-source-hue) + 120) 30% 90%);
+  --m3-on-tertiary-container: hsl(calc(var(--m3-source-hue) + 120) 34% 14%);
+
+  --m3-error: hsl(0 70% 45%);
+  --m3-on-error: #ffffff;
+  --m3-error-container: hsl(0 80% 93%);
+  --m3-on-error-container: hsl(0 70% 18%);
+
+  --m3-success: hsl(150 50% 36%);
+  --m3-warning: hsl(38 90% 48%);
+
+  /* Shape scale */
+  --m3-shape-xs: 4px;
+  --m3-shape-sm: 8px;
+  --m3-shape-md: 12px;
+  --m3-shape-lg: 16px;
+  --m3-shape-xl: 28px;
+  --m3-shape-full: 9999px;
+
+  /* Spacing (symmetric, 4px base) */
+  --m3-space-1: 4px;
+  --m3-space-2: 8px;
+  --m3-space-3: 12px;
+  --m3-space-4: 16px;
+  --m3-space-5: 24px;
+  --m3-space-6: 32px;
+  --m3-space-7: 48px;
+  --m3-space-8: 64px;
+
+  /* Elevation (key + ambient, M3) */
+  --m3-elev-0: none;
+  --m3-elev-1: 0 1px 2px 0 rgb(0 0 0 / 0.08), 0 1px 3px 1px rgb(0 0 0 / 0.06);
+  --m3-elev-2: 0 1px 2px 0 rgb(0 0 0 / 0.10), 0 2px 6px 2px rgb(0 0 0 / 0.08);
+  --m3-elev-3: 0 1px 3px 0 rgb(0 0 0 / 0.12), 0 4px 8px 3px rgb(0 0 0 / 0.10);
+  --m3-elev-4: 0 2px 3px 0 rgb(0 0 0 / 0.14), 0 6px 10px 4px rgb(0 0 0 / 0.12);
+  --m3-elev-5: 0 4px 4px 0 rgb(0 0 0 / 0.16), 0 8px 12px 6px rgb(0 0 0 / 0.14);
+
+  /* Motion (M3 expressive) */
+  --m3-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --m3-ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --m3-ease-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
+  --m3-ease-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --m3-dur-short-1: 50ms;
+  --m3-dur-short-2: 100ms;
+  --m3-dur-short-3: 150ms;
+  --m3-dur-short-4: 200ms;
+  --m3-dur-medium-1: 250ms;
+  --m3-dur-medium-2: 300ms;
+  --m3-dur-medium-3: 350ms;
+  --m3-dur-medium-4: 400ms;
+  --m3-dur-long-1: 450ms;
+  --m3-dur-long-2: 500ms;
+
+  /* Typography scale */
+  --m3-font-brand: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --m3-font-plain: var(--m3-font-brand);
+  --m3-font-serif: "Source Serif 4", "Charter", Georgia, "Times New Roman", serif;
+
+  --m3-display-lg: 600 57px/64px var(--m3-font-brand);
+  --m3-display-md: 600 45px/52px var(--m3-font-brand);
+  --m3-display-sm: 600 36px/44px var(--m3-font-brand);
+  --m3-headline-lg: 600 32px/40px var(--m3-font-brand);
+  --m3-headline-md: 600 28px/36px var(--m3-font-brand);
+  --m3-headline-sm: 600 24px/32px var(--m3-font-brand);
+  --m3-title-lg: 500 22px/28px var(--m3-font-brand);
+  --m3-title-md: 500 16px/24px var(--m3-font-brand);
+  --m3-title-sm: 500 14px/20px var(--m3-font-brand);
+  --m3-body-lg: 400 16px/24px var(--m3-font-brand);
+  --m3-body-md: 400 14px/20px var(--m3-font-brand);
+  --m3-body-sm: 400 12px/16px var(--m3-font-brand);
+  --m3-label-lg: 500 14px/20px var(--m3-font-brand);
+  --m3-label-md: 500 12px/16px var(--m3-font-brand);
+  --m3-label-sm: 500 11px/16px var(--m3-font-brand);
+
+  /* State layer opacities (M3) */
+  --m3-state-hover: 0.08;
+  --m3-state-focus: 0.10;
+  --m3-state-pressed: 0.10;
+
+  /* Gradient surfaces (premium) */
+  --m3-gradient-hero: radial-gradient(
+    1200px circle at 10% -10%,
+    hsl(var(--m3-source-hue) 70% 82% / 0.45),
+    transparent 55%
+  ), radial-gradient(
+    900px circle at 110% 10%,
+    hsl(calc(var(--m3-source-hue) + 60) 70% 80% / 0.35),
+    transparent 50%
+  );
+  --m3-gradient-tint: linear-gradient(
+    135deg,
+    hsl(var(--m3-source-hue) 40% 98%) 0%,
+    hsl(calc(var(--m3-source-hue) + 30) 40% 96%) 100%
+  );
+}
+
+/* Dark scheme */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --m3-surface-dim: hsl(var(--m3-source-hue) 10% 6%);
+    --m3-surface: hsl(var(--m3-source-hue) 14% 10%);
+    --m3-surface-bright: hsl(var(--m3-source-hue) 14% 18%);
+    --m3-surface-container-lowest: hsl(var(--m3-source-hue) 14% 5%);
+    --m3-surface-container-low: hsl(var(--m3-source-hue) 14% 11%);
+    --m3-surface-container: hsl(var(--m3-source-hue) 14% 13%);
+    --m3-surface-container-high: hsl(var(--m3-source-hue) 14% 16%);
+    --m3-surface-container-highest: hsl(var(--m3-source-hue) 14% 20%);
+
+    --m3-on-surface: hsl(var(--m3-source-hue) 10% 92%);
+    --m3-on-surface-variant: hsl(var(--m3-source-hue) 10% 75%);
+    --m3-outline: hsl(var(--m3-source-hue) 8% 55%);
+    --m3-outline-variant: hsl(var(--m3-source-hue) 10% 28%);
+
+    --m3-primary: hsl(var(--m3-source-hue) var(--m3-source-chroma) 78%);
+    --m3-on-primary: hsl(var(--m3-source-hue) var(--m3-source-chroma) 18%);
+    --m3-primary-container: hsl(var(--m3-source-hue) var(--m3-source-chroma) 28%);
+    --m3-on-primary-container: hsl(var(--m3-source-hue) var(--m3-source-chroma) 92%);
+
+    --m3-secondary: hsl(calc(var(--m3-source-hue) + 30) 22% 80%);
+    --m3-on-secondary: hsl(calc(var(--m3-source-hue) + 30) 26% 18%);
+    --m3-secondary-container: hsl(calc(var(--m3-source-hue) + 30) 22% 30%);
+    --m3-on-secondary-container: hsl(calc(var(--m3-source-hue) + 30) 26% 92%);
+
+    --m3-tertiary: hsl(calc(var(--m3-source-hue) + 120) 24% 80%);
+    --m3-on-tertiary: hsl(calc(var(--m3-source-hue) + 120) 28% 18%);
+    --m3-tertiary-container: hsl(calc(var(--m3-source-hue) + 120) 22% 30%);
+    --m3-on-tertiary-container: hsl(calc(var(--m3-source-hue) + 120) 28% 92%);
+
+    --m3-error: hsl(0 70% 80%);
+    --m3-on-error: hsl(0 60% 20%);
+    --m3-error-container: hsl(0 60% 30%);
+    --m3-on-error-container: hsl(0 80% 92%);
+
+    --m3-gradient-hero: radial-gradient(
+      1200px circle at 10% -10%,
+      hsl(var(--m3-source-hue) 60% 30% / 0.45),
+      transparent 55%
+    ), radial-gradient(
+      900px circle at 110% 10%,
+      hsl(calc(var(--m3-source-hue) + 60) 50% 24% / 0.35),
+      transparent 50%
+    );
+    --m3-gradient-tint: linear-gradient(
+      135deg,
+      hsl(var(--m3-source-hue) 18% 8%) 0%,
+      hsl(calc(var(--m3-source-hue) + 30) 20% 12%) 100%
+    );
+    color-scheme: dark;
+  }
+}
+
+[data-theme="dark"] {
+  --m3-surface-dim: hsl(var(--m3-source-hue) 10% 6%);
+  --m3-surface: hsl(var(--m3-source-hue) 14% 10%);
+  --m3-surface-bright: hsl(var(--m3-source-hue) 14% 18%);
+  --m3-surface-container-lowest: hsl(var(--m3-source-hue) 14% 5%);
+  --m3-surface-container-low: hsl(var(--m3-source-hue) 14% 11%);
+  --m3-surface-container: hsl(var(--m3-source-hue) 14% 13%);
+  --m3-surface-container-high: hsl(var(--m3-source-hue) 14% 16%);
+  --m3-surface-container-highest: hsl(var(--m3-source-hue) 14% 20%);
+  --m3-on-surface: hsl(var(--m3-source-hue) 10% 92%);
+  --m3-on-surface-variant: hsl(var(--m3-source-hue) 10% 75%);
+  --m3-outline: hsl(var(--m3-source-hue) 8% 55%);
+  --m3-outline-variant: hsl(var(--m3-source-hue) 10% 28%);
+  --m3-primary: hsl(var(--m3-source-hue) var(--m3-source-chroma) 78%);
+  --m3-on-primary: hsl(var(--m3-source-hue) var(--m3-source-chroma) 18%);
+  --m3-primary-container: hsl(var(--m3-source-hue) var(--m3-source-chroma) 28%);
+  --m3-on-primary-container: hsl(var(--m3-source-hue) var(--m3-source-chroma) 92%);
+  --m3-secondary-container: hsl(calc(var(--m3-source-hue) + 30) 22% 30%);
+  --m3-on-secondary-container: hsl(calc(var(--m3-source-hue) + 30) 26% 92%);
+  --m3-tertiary-container: hsl(calc(var(--m3-source-hue) + 120) 22% 30%);
+  --m3-on-tertiary-container: hsl(calc(var(--m3-source-hue) + 120) 28% 92%);
+  --m3-gradient-hero: radial-gradient(1200px circle at 10% -10%, hsl(var(--m3-source-hue) 60% 30% / 0.45), transparent 55%), radial-gradient(900px circle at 110% 10%, hsl(calc(var(--m3-source-hue) + 60) 50% 24% / 0.35), transparent 50%);
+  --m3-gradient-tint: linear-gradient(135deg, hsl(var(--m3-source-hue) 18% 8%) 0%, hsl(calc(var(--m3-source-hue) + 30) 20% 12%) 100%);
+  color-scheme: dark;
+}
+
+/* ============================================================
+   Allo / Messages-palette + expressive-motion extensions
+   Added for M3 refactor — consumed opt-in via data-app="messages"
+   ============================================================ */
+
+:root {
+  /* Pill + asymmetric bubble radii */
+  --m3-shape-pill: var(--m3-shape-full); /* alias of --m3-shape-full, preferred going forward */
+  --m3-bubble-lg: 20px;             /* bubble outer-corner radius */
+  --m3-bubble-sm: 6px;              /* bubble tail-side radius */
+
+  /* Expressive / spring motion */
+  --m3-spring-bubble: cubic-bezier(0.20, 1.20, 0.30, 1.00);
+  --m3-dur-bubble: 260ms;
+  --m3-ease-expressive-spatial: cubic-bezier(0.34, 1.56, 0.64, 1.00);
+  --m3-ease-expressive-effects: cubic-bezier(0.20, 0.00, 0.00, 1.00);
+
+  /* Per-sender deterministic hue (consumer sets inline: style="--m3-sender-hue:142") */
+  --m3-sender-hue: var(--m3-source-hue);
+}
+
+/* Saturated Messages palette — opt-in per app root */
+[data-app="messages"] {
+  --m3-source-hue: 150;                 /* fresh-green seed for Messages */
+  --m3-source-chroma: 58%;
+  --m3-primary: hsl(var(--m3-source-hue) 62% 44%);
+  --m3-primary-container: hsl(var(--m3-source-hue) 58% 82%);
+  --m3-on-primary-container: hsl(var(--m3-source-hue) 68% 14%);
+  --m3-secondary-container: hsl(calc(var(--m3-source-hue) + 30) 48% 85%);
+  --m3-tertiary-container: hsl(calc(var(--m3-source-hue) + 120) 50% 84%);
+}
+@media (prefers-color-scheme: dark) {
+  [data-app="messages"]:not([data-theme]) {
+    --m3-primary: hsl(var(--m3-source-hue) 58% 72%);
+    --m3-primary-container: hsl(var(--m3-source-hue) 48% 32%);
+    --m3-on-primary-container: hsl(var(--m3-source-hue) 60% 94%);
+  }
+}
+[data-app="messages"][data-theme="dark"] {
+  --m3-primary: hsl(var(--m3-source-hue) 58% 72%);
+  --m3-primary-container: hsl(var(--m3-source-hue) 48% 32%);
+  --m3-on-primary-container: hsl(var(--m3-source-hue) 60% 94%);
+}

@@ -1,0 +1,5 @@
+BEGIN;
+DELETE FROM config WHERE key = 'TIERED_TIME_STOP_ENABLED';
+UPDATE config SET value = '0.5'::jsonb WHERE key = 'MIN_STOP_WIDTH_PCT';
+ALTER TABLE slot_profiles DROP COLUMN IF EXISTS stop_mode;
+COMMIT;

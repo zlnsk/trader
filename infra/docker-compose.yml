@@ -1,0 +1,25 @@
+services:
+  ib-gateway:
+    image: gnzsnz/ib-gateway:stable
+    container_name: trader-ib-gateway
+    restart: unless-stopped
+    env_file:
+      - ib-gateway.env
+    environment:
+      READ_ONLY_API: "no"
+      TWS_SETTINGS_PATH: /opt/ibc/settings
+      TIME_ZONE: UTC
+      TWS_ACCEPT_INCOMING: accept
+      RELOGIN_AFTER_TWOFA_TIMEOUT: "yes"
+      TWOFA_TIMEOUT_ACTION: restart
+    ports:
+      - "127.0.0.1:4002:4004"
+      - "127.0.0.1:5900:5900"
+    volumes:
+      - ./ib-settings:/opt/ibc/settings
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c 'exec 3<>/dev/tcp/127.0.0.1/4002 && exec 3<&-'"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 120s

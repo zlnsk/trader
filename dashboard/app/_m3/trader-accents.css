@@ -1,0 +1,99 @@
+/* Trader-only vivid accents layered over scandi earth tones.
+   Imported after scandi.css so these win the cascade. */
+
+:root, .scandi {
+  --win:        #2E8B5A;   /* filled / profit */
+  --win-wash:   #D9ECE0;
+  --loss:       #B23A2A;   /* loss / rejected */
+  --loss-wash:  #F3D8D2;
+  --pending:    #C58F2D;   /* waiting / submitted */
+  --pending-wash: #F5E6C4;
+  --info:       #3B6B8F;   /* informational / queue */
+  --info-wash:  #D6E2EC;
+  --live:       #7F5C9E;   /* manual-approval actionable */
+  --live-wash:  #E4DAEE;
+}
+
+/* ---------- pills (status tokens with colour) ---------- */
+.scandi .pill {
+  display: inline-flex !important; align-items: center !important; justify-content: center !important; gap: 6px !important;
+  padding: 5px 10px !important; border-radius: 4px !important;
+  font-family: var(--scandi-mono) !important;
+  font-size: 11px !important; line-height: 1 !important; letter-spacing: 0.05em !important; text-transform: uppercase !important;
+  border: 1px solid transparent !important;
+  white-space: nowrap !important;
+  min-height: unset !important;
+  box-shadow: none !important;
+}
+.scandi .pill-win     { background: var(--win-wash);     color: var(--win)     !important; border-color: var(--win); }
+.scandi .pill-loss    { background: var(--loss-wash);    color: var(--loss)    !important; border-color: var(--loss); }
+.scandi .pill-pending { background: var(--pending-wash); color: #8a6820        !important; border-color: var(--pending); }
+.scandi .pill-info    { background: var(--info-wash);    color: var(--info)    !important; border-color: var(--info); }
+.scandi .pill-live    { background: var(--live-wash);    color: var(--live)    !important; border-color: var(--live); }
+.scandi .pill-muted   { background: #ECE8DF; color: var(--ink-3) !important; border-color: var(--line-2); }
+
+/* P&L numeric colouring */
+.scandi .num.pos, .scandi .v.pos, .scandi .value.pos { color: var(--win) !important; }
+.scandi .num.neg, .scandi .v.neg, .scandi .value.neg { color: var(--loss) !important; }
+
+/* Hero portfolio tint: use --win if up today, --loss if down */
+.scandi .hero-score .value.up   { color: var(--win)  !important; }
+.scandi .hero-score .value.down { color: var(--loss) !important; }
+
+/* ---------- progress bar (annual target) ---------- */
+.scandi .progress {
+  margin-top: 14px;
+  height: 10px; border-radius: 999px;
+  background: var(--paper-2); overflow: hidden;
+  border: 1px solid var(--line);
+}
+.scandi .progress > span {
+  display: block; height: 100%;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--win) 100%);
+  transition: width 600ms ease;
+}
+.scandi .progress.is-behind > span {
+  background: linear-gradient(90deg, var(--warm) 0%, var(--pending) 100%);
+}
+
+/* ---------- Trade Queue ---------- */
+.scandi .queue-card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 22px 24px;
+}
+.scandi .queue-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding-bottom: 14px; border-bottom: 1px solid var(--line); margin-bottom: 14px;
+}
+.scandi .queue-head .t { font-size: 14px; font-weight: 500; color: var(--ink); }
+.scandi .queue-head .s { font-family: var(--scandi-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-4); }
+.scandi .queue-section-head {
+  font-family: var(--scandi-mono); font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-4);
+  margin: 16px 0 8px;
+}
+.scandi .queue-section-head:first-child { margin-top: 0; }
+
+.scandi .queue-row {
+  display: grid;
+  grid-template-columns: 72px 56px 1fr auto auto auto;
+  align-items: center; gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--line);
+  font-family: var(--scandi-mono); font-size: 13px;
+}
+.scandi .queue-row:last-child { border-bottom: none; }
+.scandi .queue-row .t-time { color: var(--ink-4); font-size: 11px; letter-spacing: 0.06em; }
+.scandi .queue-row .t-side {
+  font-weight: 600; letter-spacing: 0.08em; font-size: 11px; text-transform: uppercase;
+}
+.scandi .queue-row .t-side.buy  { color: var(--win); }
+.scandi .queue-row .t-side.sell { color: var(--loss); }
+.scandi .queue-row .t-sym {
+  font-family: var(--scandi-sans); font-size: 14px; font-weight: 500; color: var(--ink);
+}
+.scandi .queue-row .t-sym .sub { color: var(--ink-4); font-size: 12px; margin-left: 8px; font-weight: 400; }
+.scandi .queue-row .t-price { color: var(--ink-2); tabular-nums: 1; }
+.scandi .queue-row .t-qty   { color: var(--ink-3); }
+
+.scandi .queue-empty { padding: 20px 0; text-align: center; color: var(--ink-4); font-size: 13px; font-style: italic; }

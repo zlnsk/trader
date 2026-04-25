@@ -1,0 +1,507 @@
+/* M3 Visible Overlay — overrides common legacy classes to render in M3.
+   Load AFTER tokens + components + any app-specific CSS for precedence. */
+
+/* Body background gets radial gradient + M3 surface */
+html, body {
+  background:
+    radial-gradient(1200px circle at 8% -10%, hsl(var(--m3-source-hue, 220) 70% 82% / 0.55), transparent 55%),
+    radial-gradient(900px circle at 105% 8%, hsl(calc(var(--m3-source-hue, 220) + 60) 65% 80% / 0.45), transparent 50%),
+    var(--m3-surface, #fafaf7) !important;
+  color: var(--m3-on-surface, #1a1a1a) !important;
+  min-height: 100dvh;
+  font-family: var(--m3-font-brand, -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif) !important;
+  -webkit-font-smoothing: antialiased;
+}
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background:
+      radial-gradient(1200px circle at 8% -10%, hsl(var(--m3-source-hue, 220) 55% 30% / 0.40), transparent 55%),
+      radial-gradient(900px circle at 105% 8%, hsl(calc(var(--m3-source-hue, 220) + 60) 40% 22% / 0.30), transparent 50%),
+      var(--m3-surface, #14151a) !important;
+  }
+}
+
+/* Primary buttons — pill, filled, elevation */
+.btn-primary, button.primary, .primary-btn, input[type="submit"], button[type="submit"],
+.m3-btn-filled, .btn-filled {
+  background: var(--m3-primary) !important;
+  background-image: none !important;
+  color: var(--m3-on-primary) !important;
+  border-radius: var(--m3-shape-full) !important;
+  box-shadow: var(--m3-elev-1) !important;
+  border: 0 !important;
+  padding: 10px 22px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em !important;
+  cursor: pointer;
+  transition: box-shadow 150ms cubic-bezier(0.2,0,0,1), transform 100ms cubic-bezier(0.2,0,0,1), filter 150ms !important;
+}
+.btn-primary:hover:not(:disabled), button.primary:hover:not(:disabled),
+.primary-btn:hover:not(:disabled), input[type="submit"]:hover:not(:disabled),
+button[type="submit"]:hover:not(:disabled), .m3-btn-filled:hover:not(:disabled), .btn-filled:hover:not(:disabled) {
+  box-shadow: var(--m3-elev-2) !important;
+  filter: brightness(1.08);
+}
+.btn-primary:active:not(:disabled), button.primary:active:not(:disabled),
+.primary-btn:active:not(:disabled), input[type="submit"]:active:not(:disabled),
+button[type="submit"]:active:not(:disabled) { transform: scale(0.97); }
+
+/* Secondary / ghost / outlined buttons */
+.btn-secondary, .btn-ghost, button.secondary, .secondary-btn, .m3-btn-outlined, .btn-outlined {
+  background: transparent !important;
+  color: var(--m3-on-surface) !important;
+  border: 1px solid var(--m3-outline-variant) !important;
+  border-radius: var(--m3-shape-full) !important;
+  box-shadow: none !important;
+  padding: 10px 22px !important;
+  font-weight: 500 !important;
+  cursor: pointer;
+}
+.btn-secondary:hover, .btn-ghost:hover, button.secondary:hover,
+.secondary-btn:hover, .m3-btn-outlined:hover, .btn-outlined:hover {
+  background: color-mix(in srgb, var(--m3-on-surface) 6%, transparent) !important;
+  border-color: var(--m3-outline) !important;
+}
+
+/* Cards */
+.card, .panel, .tile, .glass-card, .premium-card, .elevated-card, .m3-card {
+  background: var(--m3-surface-container-low) !important;
+  border-radius: var(--m3-shape-lg) !important;
+  box-shadow: var(--m3-elev-1) !important;
+  border: 1px solid var(--m3-outline-variant) !important;
+  transition: box-shadow 200ms cubic-bezier(0.2,0,0,1), transform 250ms cubic-bezier(0.2,0,0,1) !important;
+}
+.card:hover, .panel:hover, .tile:hover, .glass-card:hover, .premium-card:hover {
+  box-shadow: var(--m3-elev-2) !important;
+}
+
+/* Inputs */
+input[type="text"], input[type="email"], input[type="password"], input[type="number"],
+input[type="search"], input[type="url"], input[type="tel"], textarea, select {
+  background: var(--m3-surface-container) !important;
+  color: var(--m3-on-surface) !important;
+  border: 1px solid var(--m3-outline-variant) !important;
+  border-radius: var(--m3-shape-sm, 8px) !important;
+  padding: 10px 14px !important;
+  font-family: inherit !important;
+  transition: border-color 150ms, background-color 150ms !important;
+}
+input:focus, textarea:focus, select:focus {
+  outline: 2px solid var(--m3-primary) !important;
+  outline-offset: 1px !important;
+  border-color: var(--m3-primary) !important;
+}
+
+/* Top bars / app bars only — scoped to sticky/fixed or explicit topbar classes.
+   Do NOT apply to centered brand <header> blocks (use .m3-brand-title to opt out). */
+.app-header, .topbar, .m3-topbar,
+header.app-bar, header[data-topbar="true"] {
+  background: color-mix(in srgb, var(--m3-surface) 85%, transparent) !important;
+  backdrop-filter: saturate(1.4) blur(14px);
+  -webkit-backdrop-filter: saturate(1.4) blur(14px);
+  border-bottom: 1px solid color-mix(in srgb, var(--m3-outline-variant) 60%, transparent) !important;
+}
+/* Any <header> not explicitly a topbar: no stray hairline. */
+header:not(.app-header):not(.topbar):not(.m3-topbar):not([data-topbar="true"]) {
+  border-bottom: 0 !important;
+}
+
+/* Dividers */
+hr { border: 0 !important; border-top: 1px solid var(--m3-outline-variant) !important; }
+
+/* Links */
+a { color: var(--m3-primary) !important; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Pill-wrapped inputs: container already handles border/radius/bg */
+.search-wrap input[type="text"], .search-wrap input[type="search"],
+.search-pill input, .pill input {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: .65rem 0 !important;
+}
+.search-wrap input:focus, .search-pill input:focus, .pill input:focus {
+  outline: none !important;
+  border-color: transparent !important;
+}
+
+/* MUI inputs: neutralize overlay so floating labels and MUI styling work */
+.MuiInputBase-input, .MuiFilledInput-input, .MuiOutlinedInput-input, .MuiInput-input,
+.MuiSelect-select, .MuiOutlinedInput-root input, .MuiFilledInput-root input {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+.MuiInputBase-root, .MuiFilledInput-root, .MuiOutlinedInput-root {
+  background: inherit !important;
+}
+.MuiInputBase-input:focus, .MuiFilledInput-input:focus, .MuiOutlinedInput-input:focus {
+  outline: none !important;
+  border-color: transparent !important;
+}
+
+/* Override app .hero full-screen white gradient so M3 body gradient shows through */
+.hero { background: transparent !important; min-height: auto !important; }
+.bar { background: color-mix(in srgb, var(--m3-surface) 92%, transparent) !important; }
+
+/* Override app .hero full-screen white gradient so M3 body gradient shows through */
+.hero { background: transparent !important; }
+
+/* === Canonical input pill (shared across Boarding) === */
+.search-wrap, .search-box, .search-pill, .pill {
+  background: var(--m3-surface-container-low) !important;
+  border: 1px solid var(--m3-outline-variant) !important;
+  border-radius: 9999px !important;
+  padding: 6px 6px 6px 22px !important;
+  box-shadow: var(--m3-elev-1) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  min-height: 56px !important;
+}
+.search-wrap:focus-within, .search-box:focus-within, .search-pill:focus-within, .pill:focus-within {
+  border-color: var(--m3-primary) !important;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--m3-primary) 18%, transparent), var(--m3-elev-2) !important;
+}
+.search-wrap input, .search-box input, .search-pill input, .pill input {
+  flex: 1 !important;
+  background: transparent !important;
+  border: 0 !important;
+  outline: none !important;
+  font: 1rem var(--m3-font-brand, system-ui), -apple-system, sans-serif !important;
+  color: var(--m3-on-surface) !important;
+  padding: 12px 0 !important;
+}
+.search-wrap button, .search-box button, .search-pill button, .pill button,
+.search-wrap #go, #go {
+  flex: 0 0 auto !important;
+  min-width: 44px !important;
+  height: 44px !important;
+  padding: 0 18px !important;
+  border: 0 !important;
+  border-radius: 9999px !important;
+  background: var(--m3-primary) !important;
+  background-image: none !important;
+  color: var(--m3-on-primary) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  box-shadow: var(--m3-elev-1) !important;
+  transition: transform .12s, box-shadow .15s !important;
+}
+.search-wrap button:hover, .search-box button:hover, .search-pill button:hover, .pill button:hover, #go:hover {
+  box-shadow: var(--m3-elev-2) !important;
+}
+.search-wrap button:active, .search-box button:active, #go:active {
+  transform: scale(.94) !important;
+}
+/* === Canonical input pill (shared across Boarding) === */
+.search-wrap, .search-box, .search-pill, .pill {
+  background: var(--m3-surface-container-low) !important;
+  border: 1px solid var(--m3-outline-variant) !important;
+  border-radius: 9999px !important;
+  padding: 6px 6px 6px 22px !important;
+  box-shadow: var(--m3-elev-1) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  min-height: 56px !important;
+}
+.search-wrap:focus-within, .search-box:focus-within, .search-pill:focus-within, .pill:focus-within {
+  border-color: var(--m3-primary) !important;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--m3-primary) 18%, transparent), var(--m3-elev-2) !important;
+}
+.search-wrap input, .search-box input, .search-pill input, .pill input {
+  flex: 1 !important;
+  background: transparent !important;
+  border: 0 !important;
+  outline: none !important;
+  font: 1rem var(--m3-font-brand, system-ui), -apple-system, sans-serif !important;
+  color: var(--m3-on-surface) !important;
+  padding: 12px 0 !important;
+}
+.search-wrap button, .search-box button, .search-pill button, .pill button,
+.search-wrap #go, #go {
+  flex: 0 0 auto !important;
+  min-width: 44px !important;
+  height: 44px !important;
+  padding: 0 18px !important;
+  border: 0 !important;
+  border-radius: 9999px !important;
+  background: var(--m3-primary) !important;
+  background-image: none !important;
+  color: var(--m3-on-primary) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  box-shadow: var(--m3-elev-1) !important;
+  transition: transform .12s, box-shadow .15s !important;
+}
+.search-wrap button:hover, .search-box button:hover, .search-pill button:hover, .pill button:hover, #go:hover {
+  box-shadow: var(--m3-elev-2) !important;
+}
+.search-wrap button:active, .search-box button:active, #go:active {
+  transform: scale(.94) !important;
+}
+
+
+/* Force Inter everywhere — overrides Messages app body Roboto */
+html, body, button, input, textarea, select, .MuiTypography-root, [class*="text-"] {
+  font-family: "Inter", var(--m3-font-brand), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+}
+
+
+/* === Canonical input pill (matches Boarding/Messages) === */
+.search-wrap, .search-box, .search-pill, .pill,
+.MuiFilledInput-root, .MuiOutlinedInput-root {
+  background: var(--m3-surface-container-low) !important;
+  border: 1px solid var(--m3-outline-variant) !important;
+  border-radius: 9999px !important;
+  padding-left: 22px !important;
+  box-shadow: var(--m3-elev-1) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  min-height: 56px !important;
+  transition: border-color .15s, box-shadow .15s !important;
+}
+.MuiFilledInput-root:before, .MuiFilledInput-root:after,
+.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  display: none !important; border: 0 !important;
+}
+.search-wrap:focus-within, .search-box:focus-within, .search-pill:focus-within, .pill:focus-within,
+.MuiFilledInput-root.Mui-focused, .MuiOutlinedInput-root.Mui-focused {
+  border-color: var(--m3-primary) !important;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--m3-primary) 18%, transparent), var(--m3-elev-2) !important;
+}
+.search-wrap input, .search-box input, .search-pill input, .pill input,
+.MuiFilledInput-input, .MuiOutlinedInput-input {
+  flex: 1 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  outline: none !important;
+  font: 1rem var(--m3-font-brand, system-ui), -apple-system, sans-serif !important;
+  color: var(--m3-on-surface) !important;
+  padding: 12px 0 !important;
+}
+.search-wrap button, .search-box button, .search-pill button, .pill button {
+  flex: 0 0 auto !important;
+  min-width: 44px !important;
+  height: 44px !important;
+  padding: 0 22px !important;
+  border: 0 !important;
+  border-radius: 9999px !important;
+  background: var(--m3-primary) !important;
+  background-image: none !important;
+  color: var(--m3-on-primary) !important;
+  display: flex !important; align-items: center !important; justify-content: center !important;
+  cursor: pointer !important;
+  box-shadow: var(--m3-elev-1) !important;
+  transition: transform .12s, box-shadow .15s !important;
+  font-family: "Inter", var(--m3-font-brand), -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
+  line-height: 1 !important;
+}
+.search-wrap button:hover, .search-box button:hover, .search-pill button:hover, .pill button:hover {
+  box-shadow: var(--m3-elev-2) !important;
+}
+
+/* === Canonical layout — top-anchor title + pill at identical viewport y === */
+body {
+  margin: 0 !important;
+}
+.min-h-dvh, .min-h-screen, [class*="min-h-dvh"], [class*="min-h-screen"], .hero, .hero-section {
+  min-height: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  padding-top: 0 !important;
+}
+
+/* === Canonical title (INLINE group: Emails/Interview/Messages) === */
+h1, .app-title, .MuiTypography-h4, .MuiTypography-h5, .MuiTypography-h6 {
+  font-family: "Inter", var(--m3-font-brand), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.2em !important;
+  font-size: 1.1rem !important;
+  line-height: 1.2 !important;
+  color: var(--m3-on-surface) !important;
+  background: none !important;
+  -webkit-text-fill-color: currentColor !important;
+  text-align: left !important;
+  display: inline-block !important;
+  width: auto !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* === Hide redundant Inbox subtitle (folder name shown in sidebar already) === */
+#inbox-title, .inbox-header h1, .inbox-header { display: none !important; }
+
+/* ============================================================
+   MUI CssBaseline neutralizers — opt-in per app root
+   ============================================================ */
+
+body.m3-overlay-active {
+  background: transparent !important;
+}
+.MuiPaper-root[data-m3-neutral="true"] {
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+/* ============================================================
+   M3 spacing pass — tokenized padding/margins applied globally.
+   Scope: any app importing shared-m3/overlay.css.
+   ============================================================ */
+
+/* Page container: centered max-width with token padding */
+.m3-page, .page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--m3-space-5) var(--m3-space-4);
+}
+
+/* Brand title: consistent vertical rhythm above/below */
+.m3-brand-title {
+  margin-block: var(--m3-space-5) var(--m3-space-3) !important;
+}
+
+/* Pill-tab nav strip: 16 top / 24 bottom per M3 spec.
+   Target a <nav> that is an immediate child of a <header>. */
+header > nav {
+  margin-block: var(--m3-space-4) var(--m3-space-5) !important;
+}
+
+/* Page-level H1 (e.g. "DASHBOARD"): tokenized block margins */
+main h1, .m3-page-title, h1.page-title {
+  margin-block-start: var(--m3-space-5);
+  margin-block-end: var(--m3-space-4);
+}
+
+/* Cards: default M3 padding on any card-like surface */
+.m3-card, .card, .premium-card {
+  padding: var(--m3-space-5);
+  border-radius: var(--m3-shape-lg);
+}
+.m3-card > * + *, .card > * + *, .premium-card > * + * {
+  margin-block-start: var(--m3-space-4);
+}
+
+/* MUI Paper used as a card (unless explicitly neutralized) */
+.MuiPaper-root:not([data-m3-neutral="true"]):not(.MuiAppBar-root):not(.MuiDrawer-paper) {
+  padding: var(--m3-space-5);
+  border-radius: var(--m3-shape-lg) !important;
+}
+.MuiPaper-root.MuiCard-root { padding: 0; }
+.MuiPaper-root.MuiCard-root .MuiCardContent-root { padding: var(--m3-space-5) !important; }
+
+/* Section header inside a card */
+.m3-card h2, .m3-card h3, .card h2, .card h3,
+.MuiPaper-root h2, .MuiPaper-root h3 {
+  color: var(--m3-on-surface-variant);
+  margin-block-end: var(--m3-space-3);
+}
+
+/* List of cards — 8px gap minimum */
+.m3-list, .card-list, ul.cards, ol.cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--m3-space-2);
+  list-style: none;
+  padding: 0;
+}
+
+/* Buttons: 40px height + pill radius by default */
+button.m3-btn, .m3-btn, .MuiButton-root {
+  min-height: 40px;
+  border-radius: var(--m3-shape-full) !important;
+}
+
+/* Form inputs: 48px height, md radius */
+.m3-input, input[type="text"]:not(.search-wrap input):not(.search-pill input):not(.pill input),
+input[type="email"], input[type="password"], input[type="search"]:not(.search-wrap input),
+input[type="url"], input[type="tel"], input[type="number"], select, textarea {
+  min-height: 48px;
+  border-radius: var(--m3-shape-md);
+  padding-inline: var(--m3-space-4);
+}
+textarea { padding-block: var(--m3-space-3); }
+
+/* MUI outlined inputs */
+.MuiOutlinedInput-root { border-radius: var(--m3-shape-md) !important; }
+.MuiInputBase-root.MuiInput-underline::before,
+.MuiInputBase-root.MuiInput-underline::after { display: none !important; }
+
+/* Dialog / modal padding */
+.MuiDialog-paper, .m3-dialog, dialog {
+  padding: var(--m3-space-6) !important;
+  border-radius: var(--m3-shape-xl) !important;
+}
+.MuiDialogTitle-root, .m3-dialog-title { margin-block-end: var(--m3-space-4) !important; }
+.MuiDialogContent-root { padding: 0 !important; }
+.MuiDialogActions-root { padding: var(--m3-space-4) 0 0 0 !important; gap: var(--m3-space-2); }
+
+/* Tailwind class aliases → M3 spacing tokens.
+   Apps using Tailwind (Messages, Oura, Reader, Boarding) get consistent
+   token-backed spacing without editing every utility. */
+.p-2 { padding: var(--m3-space-2) !important; }
+.p-3 { padding: var(--m3-space-3) !important; }
+.p-4 { padding: var(--m3-space-4) !important; }
+.p-5 { padding: var(--m3-space-5) !important; }
+.p-6 { padding: var(--m3-space-5) !important; }
+.px-4 { padding-inline: var(--m3-space-4) !important; }
+.px-5 { padding-inline: var(--m3-space-5) !important; }
+.py-4 { padding-block: var(--m3-space-4) !important; }
+.py-5 { padding-block: var(--m3-space-5) !important; }
+.gap-2 { gap: var(--m3-space-2) !important; }
+.gap-3 { gap: var(--m3-space-3) !important; }
+.gap-4 { gap: var(--m3-space-4) !important; }
+.gap-5 { gap: var(--m3-space-5) !important; }
+.mt-4 { margin-top: var(--m3-space-4) !important; }
+.mt-5 { margin-top: var(--m3-space-5) !important; }
+.mt-6 { margin-top: var(--m3-space-5) !important; }
+.mb-4 { margin-bottom: var(--m3-space-4) !important; }
+.mb-5 { margin-bottom: var(--m3-space-5) !important; }
+.mb-6 { margin-bottom: var(--m3-space-5) !important; }
+
+/* === CANONICAL HERO — do not override per-app (added 2026-04-15) === */
+.m3-brand-title,
+.hero h1,
+.hero .m3-brand-title {
+  font-family: var(--m3-font-brand, var(--m3-font-family, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif)) !important;
+  font-size: 1.75rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.22em !important;
+  line-height: 1.2 !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  margin: 0 0 20px 0 !important;
+  padding: 20px 0 0 0 !important;
+  color: #1e293b !important;
+}
+.m3-hero,
+.hero {
+  padding: 20px 20px 12px !important;
+  text-align: center !important;
+}
+.m3-hero .search-wrapper,
+.hero .search-wrapper {
+  max-width: 720px !important;
+  margin: 0 auto !important;
+}
+

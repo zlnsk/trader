@@ -1,0 +1,28 @@
+node_modules/
+.next/
+.next.bak*/
+*.bak
+*.bak-*
+*.local
+.proxy-secret*
+ecosystem.config.js
+ecosystem.config.cjs
+.env
+.env.*
+!.env.example
+infra/ib-gateway.env
+*.tsbuildinfo
+next-env.d.ts
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.uv/
+uv.lock
+
+# Editors
+.vscode/
+.idea/
+.DS_Store
+infra/ib-settings/
