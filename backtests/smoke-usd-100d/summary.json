@@ -1,0 +1,58 @@
+{
+  "generated_at": "2026-04-19T13:55:11.135047+00:00",
+  "params": {
+    "lookback_days": 100,
+    "currency": "USD",
+    "slots": 3,
+    "slot_size": 100.0,
+    "rsi_max": 30.0,
+    "sigma_min": 1.5,
+    "score_min": 50.0,
+    "target_pct": 0.03,
+    "stop_pct": -0.05,
+    "max_hold_days": 10
+  },
+  "universe_size": 30,
+  "fetch_seconds": 12.2,
+  "n_trades": 44,
+  "by_currency": {
+    "USD": {
+      "n_trades": 44,
+      "wins": 23,
+      "losses": 21,
+      "win_rate": 52.27,
+      "total_net_pnl": 36.61,
+      "avg_net_pct": -0.303,
+      "median_net_pct": 0.816,
+      "stdev_net_pct": 4.435,
+      "best_trade_pct": 6.534,
+      "worst_trade_pct": -8.803,
+      "avg_days_held": 5.95,
+      "exit_reasons": {
+        "time": 12,
+        "target": 20,
+        "stop": 10,
+        "mtm": 2
+      }
+    }
+  },
+  "overall": {
+    "n_trades": 44,
+    "wins": 23,
+    "losses": 21,
+    "win_rate": 52.27,
+    "total_net_pnl": 36.61,
+    "avg_net_pct": -0.303,
+    "median_net_pct": 0.816,
+    "stdev_net_pct": 4.435,
+    "best_trade_pct": 6.534,
+    "worst_trade_pct": -8.803,
+    "avg_days_held": 5.95,
+    "exit_reasons": {
+      "time": 12,
+      "target": 20,
+      "stop": 10,
+      "mtm": 2
+    }
+  }
+}

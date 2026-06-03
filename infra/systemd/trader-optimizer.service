@@ -1,0 +1,20 @@
+[Unit]
+Description=Trader optimizer — self-optimization service (separate process from trader-bot)
+After=network-online.target postgresql.service trader-bot.service
+Wants=network-online.target postgresql.service
+
+[Service]
+Type=simple
+WorkingDirectory=./optimizer
+EnvironmentFile=./infra/.env
+ExecStart=./optimizer/.venv/bin/python -m optimizer.scheduler
+Restart=always
+RestartSec=15
+TimeoutStopSec=30
+StandardOutput=journal
+StandardError=journal
+# Crash isolation — optimizer dying must not cascade to trader-bot.
+# trader-bot has its own unit; no dependency from us to there.
+
+[Install]
+WantedBy=multi-user.target

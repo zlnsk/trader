@@ -1,0 +1,17 @@
+[project]
+name = "trader-bot"
+version = "0.1.0"
+description = "Dip-buy trading bot — IBKR + LLM veto"
+requires-python = ">=3.12"
+dependencies = [
+    "asyncpg>=0.30",
+    "httpx>=0.28",
+    "ib_async>=1.0",
+    "python-dotenv>=1.0",
+    "pydantic>=2.8",
+    "yfinance>=0.2",
+    "lxml>=5.0",
+]
+
+[tool.uv]
+package = false
